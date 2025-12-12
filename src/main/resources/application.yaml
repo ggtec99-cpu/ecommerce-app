@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: ecommerce
+
+  jpa:
+    hibernate:
+      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO}
+    show-sql: ${SPRING_JPA_SHOW_SQL}
+    properties:
+      hibernate:
+        format_sql: ${SPRING_JPA_FORMAT_SQL}
+        dialect: ${SPRING_JPA_DIALECT}
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+    driver-class-name: ${SPRING_DATASOURCE_DRIVER_CLASS_NAME}
+
+
+
+server:
+  port: ${PORT}
+
+
+jwt:
+#  based minutes
+  time:
+    authTokenValidationTime: ${JWT_AUTH_TOKEN_VALIDATION_TIME}
+    tempTokenValidationTime: ${JWT_TEMP_TOKEN_VALIDATION_TIME}
+  token:
+    authToken: ${JWT_AUTH_TOKEN}
+    tempToken: ${JWT_TEMP_TOKEN}
+
+
+api:
+  v1: /api/v1

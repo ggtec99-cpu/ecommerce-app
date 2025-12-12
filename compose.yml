@@ -1,0 +1,40 @@
+services:
+  db:
+    image: docker.io/postgres:18-alpine3.22
+    container_name: postgres
+    environment:
+      POSTGRES_USER: madhan
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: ecommerce
+    ports:
+      - "5432:5432"
+    networks:
+      - back_end
+  server:
+    container_name: server
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/ecommerce
+      - SPRING_DATASOURCE_USERNAME=madhan
+      - SPRING_DATASOURCE_PASSWORD=1234
+      - SPRING_DATASOURCE_DRIVER_CLASS_NAME=org.postgresql.Driver
+      - SPRING_JPA_DIALECT=org.hibernate.dialect.PostgreSQLDialect
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRING_JPA_SHOW_SQL=true
+      - SPRING_JPA_GENERATE_DDL=true
+      - JWT_AUTH_TOKEN=$6$dJTUX5RBTn6PpZhw$snnpHuiKmffWRQRepvp3BEV4PBSfPK0pCmxYqeYoEAB9bPVUNZgouTb8bI2jKL6XSoXgZuk70y.4Lcb37rAJS0
+      - JWT_TEMP_TOKEN=$6$dJTUX5RBTn6PpZhw$snnpHuiKmffWRQRepvp3BEV4PBSfPK0pCmxYqeYoEAB9bPVUNZgouTb8bI2jKL6XSoXgZuk70y.4Lcb37rAJS0
+      - PORT=8080
+    networks:
+      - front_end
+      - back_end
+    depends_on:
+      - db
+
+networks:
+  front_end:
+    driver: bridge
+  back_end:
+    driver: bridge

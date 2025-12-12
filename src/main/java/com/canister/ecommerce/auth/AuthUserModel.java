@@ -15,7 +15,7 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Entity
-@Table(name = "user")
+@Table(name = "auth_user")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter

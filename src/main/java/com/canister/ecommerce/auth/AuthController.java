@@ -28,7 +28,7 @@ public class AuthController {
     public ResponseEntity<ApiResponse<AuthUserTokenResponseDto>> userLoginByEmail(@RequestBody @Valid AuthUserUsernameLoginDto userUsernameLoginDto){
         return authService.loginUserByUsername(userUsernameLoginDto);
     }
-    @PostMapping("/login/email")
+    @PostMapping("/register")
     public ResponseEntity<ApiResponse<AuthUserTokenResponseDto>> userRegister(@RequestBody @Valid AuthUserCreateDto authUserCreateDto){
         return authService.registerUser(authUserCreateDto);
     }
